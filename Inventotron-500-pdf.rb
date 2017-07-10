@@ -1,7 +1,7 @@
 require 'squib'
 require 'pp'
 
-Squib::Deck.new(cards: 49, width: "8.9cm", height: "5.9cm") do
+Squib::Deck.new(cards: 96, width: "8.9cm", height: "5.9cm") do
 
   data = csv file: 'Inventotron-500.csv'
   new_names_sub = []

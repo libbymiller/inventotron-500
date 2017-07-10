@@ -31,5 +31,8 @@ Squib::Deck.new(cards: 3, width: "8.9cm", height: "5.9cm") do
 #        align: :center, valign: 'BOTTOM'
 
   save prefix: 'credits_', format: :png
+  save_pdf format: :pdf,
+             margin: 140, gap: 20,
+             file: "Inventotron_500_credits.pdf"
 
 end
