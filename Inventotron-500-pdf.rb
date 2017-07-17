@@ -1,7 +1,7 @@
 require 'squib'
 require 'pp'
 
-Squib::Deck.new(cards: 96, width: "8.9cm", height: "5.9cm") do
+Squib::Deck.new(cards: 100, width: "8.9cm", height: "5.9cm") do
 
   data = csv file: 'Inventotron-500.csv'
   new_names_sub = []
@@ -20,7 +20,11 @@ Squib::Deck.new(cards: 96, width: "8.9cm", height: "5.9cm") do
     if(name)
       name = name.upcase
       front_text = '<span font_desc="Futura T OT Book 100">'+name[0]+'</span>'+name[1, name.length]
-      fonts.push("Futura T OT Book 80")
+      if(count == 0 || count == 1)
+        fonts.push("Futura T OT Book 50")
+      else
+        fonts.push("Futura T OT Book 80")
+      end
       new_names.push(front_text)
 
       tt = types[count].upcase
@@ -35,7 +39,7 @@ Squib::Deck.new(cards: 96, width: "8.9cm", height: "5.9cm") do
       new_colours_text.push("#FEFFE8")
 
       new_names_sub.push(types[count].upcase)
-      new_names_sub.push("INVENTOTRON-500.COM".upcase)
+      new_names_sub.push("INVENTOTRON-500.COM v0.2".upcase)
       count = count +1
     end
   end
@@ -62,5 +66,7 @@ Squib::Deck.new(cards: 96, width: "8.9cm", height: "5.9cm") do
   save_pdf format: :pdf,
              margin: 140, gap: 20,
              file: "Inventotron_500_cards.pdf"
+
+  save prefix: 'i-500_', format: :png
 
 end
